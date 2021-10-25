@@ -9,8 +9,6 @@ import { injectHtml, minifyHtml } from "vite-plugin-html";
 import reactJsx from "vite-react-jsx";
 import tsconfig from "./tsconfig.json";
 
-console.log(process.env.FOO);
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
