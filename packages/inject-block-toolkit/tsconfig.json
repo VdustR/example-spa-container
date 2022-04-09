@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules"],
+  "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
+  "include": ["*.ts"]
+}

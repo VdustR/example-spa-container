@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link
+      rel="stylesheet"
+      href="//<%= VITE_CDN %>/normalize.css@8.0.1/normalize.css"
+    />
+    <script src="//<%= VITE_CDN %>/jquery@1.9.1/jquery.js"></script>
+    <script>
+      // INJECT_ENV START - Do not remove or modify this section
+      window.ENV_DATA = {
+        EMPTY: "<%= VITE_EMPTY %>",
+        STR: "<%= VITE_STR %>",
+        INT: "<%= VITE_INT %>",
+        FLOAT: "<%= VITE_FLOAT %>",
+        FORCE_FLOAT: "<%= VITE_FORCE_FLOAT %>",
+        NAN: "<%= VITE_NAN %>",
+        BOOL_TRUE: "<%= VITE_BOOL_TRUE %>",
+        BOOL_FALSE: "<%= VITE_BOOL_FALSE %>",
+        CDN: "<%= VITE_CDN %>",
+      };
+      // INJECT_ENV END
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

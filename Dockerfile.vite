@@ -1,0 +1,34 @@
+FROM node:16-alpine as BUILD
+WORKDIR /repo
+RUN npm i -g pnpm@6
+COPY package.json .
+COPY pnpm-lock.yaml .
+COPY pnpm-workspace.yaml .
+COPY packages/inject-block-toolkit/package.json packages/inject-block-toolkit/package.json
+COPY packages/vite/package.json packages/vite/package.json
+RUN pnpm i
+COPY packages/inject-block-toolkit/ packages/inject-block-toolkit/
+COPY packages/vite/ packages/vite/
+WORKDIR /repo/packages/vite
+RUN pnpm build
+
+FROM nginx:1-alpine
+
+# INJECT_ENV START - Do not remove or modify this section
+ENV EMPTY ""
+ENV STR "theStr"
+ENV INT "123"
+ENV FLOAT "3.14159"
+ENV FORCE_FLOAT "100"
+ENV NAN "NaN"
+ENV BOOL_TRUE "true"
+ENV BOOL_FALSE "false"
+ENV CDN "cdn.jsdelivr.net/npm"
+# INJECT_ENV END
+
+# Inject envsubst script.
+RUN sed -i '5i envsubst < /index.html.template > /usr/share/nginx/html/index.html' /docker-entrypoint.sh
+RUN sed -i '5i cp /usr/share/nginx/html/index.html /index.html.template' /docker-entrypoint.sh
+
+# Copy distrubution files.
+COPY --from=BUILD /repo/packages/vite/dist/ /usr/share/nginx/html/

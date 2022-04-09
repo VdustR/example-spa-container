@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "name": "example-spa-container",
+      "path": "."
+    },
+    {
+      "name": "vite",
+      "path": "packages/vite"
+    },
+    {
+      "name": "cra",
+      "path": "packages/cra"
+    },
+    {
+      "name": "inject-str-util",
+      "path": "packages/inject-str-util"
+    },
+    {
+      "name": "demo",
+      "path": "demo"
+    },
+    {
+      "name": "server",
+      "path": "server"
+    }
+  ]
+}

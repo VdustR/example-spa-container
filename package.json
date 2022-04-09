@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "esno": "^0.14.1",
+    "inject-block-toolkit": "workspace:*"
+  }
+}
